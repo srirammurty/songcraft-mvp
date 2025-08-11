@@ -1,0 +1,7 @@
+flask
+gunicorn
+requests
+pydub
+scipy
+soundfile
+numpy
