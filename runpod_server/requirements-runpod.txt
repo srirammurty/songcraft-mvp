@@ -1,0 +1,8 @@
+fastapi==0.99.1
+uvicorn==0.22.0
+pydantic==1.10.10
+requests
+numpy
+soundfile
+# Additional heavy deps will be installed on RunPod interactively:
+# torch, audiocraft, bark, rvc (see README)

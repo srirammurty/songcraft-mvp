@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Indian Music Starter - Local UI</title>
+</head>
+<body>
+  <h1>Indian Music Starter — Local UI</h1>
+  <textarea id="lyrics" rows="4" cols="60" placeholder="Enter Telugu lyrics...">నా ప్రేమ పాట</textarea><br>
+  <select id="style">
+    <option value="tollywood upbeat tabla flute">Tollywood upbeat (tabla + flute)</option>
+    <option value="tollywood romantic">Tollywood romantic</option>
+  </select><br>
+  <button onclick="generate()">Generate Song (instrumental + vocals)</button>
+  <div id="result"></div>
+
+<script>
+async function generate(){
+  const lyrics = document.getElementById('lyrics').value;
+  const style = document.getElementById('style').value;
+  document.getElementById('result').innerText = 'Requesting...';
+  const res = await fetch('/generate', {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({lyrics, style, duration:20})
+  });
+  const data = await res.json();
+  document.getElementById('result').innerHTML = '<pre>' + JSON.stringify(data,null,2) + '</pre>';
+}
+</script>
+</body>
+</html>
